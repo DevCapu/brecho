@@ -8,11 +8,6 @@ body {
 	overflow-x: hidden;
 }
 
-.container { 
-	padding-right: 1rem;
-	padding-left: 1rem;
-}
-
 .flex {
 	display: flex;
 }

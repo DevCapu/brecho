@@ -9,20 +9,7 @@
 	display: flex;
     justify-content: flex-start;
 }
-section{
-    display: flex ;
-    flex-direction: column;
-    width: 500%;
-    align-self: center;
 
-}
-a:link {
-    text-decoration: none;
-}
-
-h1{
-    display: flex;
-}
 
 .cadastro__descricao {
     height: 15.75rem;
@@ -43,21 +30,6 @@ h1{
 li {
     margin-right: 2rem;
     margin-top: 1rem;
-}
-
-.cartao {
-    background-color: #f1f0f1;
-    border-radius: 5px;
-    width: 100%;
-    padding: 1.7rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-    justify-content: space-between;
-    box-shadow: var(--sombra);
-    background-color: #fcf8f3;
-
 }
 
 .cartao__titulo {
