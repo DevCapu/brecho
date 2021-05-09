@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import ModalMovimentacaoDeProduto from "./Modals/ModalMovimentacaoDeProduto";
 
 const Section = styled.section`
     display: flex ;
@@ -17,6 +18,7 @@ const Cartao = styled(Section)`
     flex-direction: row;
     margin-top: 15px;
     justify-content: space-between;
+    align-items: center;
     box-shadow: var(--sombra);
     background-color: #fcf8f3;
 }
@@ -25,17 +27,19 @@ const Cartao = styled(Section)`
 
 const Titulo = styled.h1`
     font-size: 25px;
-    margin-bottom: 0.5rem;
     display: flex;
     font-weight: bold;
 `;
 
-const Botao = styled.button`
+const GrupoDeBotoes = styled.div`
+    display: flex;
+`;
+
+const Botao = styled.div`
     display: block;
     background-color:#ece9db;
     border-radius: 5px 5px 5px 5px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem auto;
     max-width: 20rem;
     padding: 0.5rem;
     box-sizing: border-box;
@@ -47,52 +51,59 @@ const Botao = styled.button`
     box-shadow: 0px 0px 5px #2e2300;
     font-style: normal;
     text-shadow: 0px -1px 1px #222222;
+    cursor: pointer;
 `;
 
-function Main() {
-    const [show, setShow] = useState(false);
+export default function Main() {
+    const [showModalEntrada, setShowEntradaProduto] = useState(false);
+    const [showModalSaida, setShowSaidaProduto] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const handleCloseModalEntrada = () => setShowEntradaProduto(false);
+    const handleShowModalEntrada = () => setShowEntradaProduto(true);
+
+    const handleCloseModalSaida = () => setShowSaidaProduto(false);
+    const handleShowModalSaida = () => setShowSaidaProduto(true);
+
 
     return (
         <main className="segundo--container">
             <Section>
                 <Cartao>
                     <Titulo>Movimentação de Produtos</Titulo>
-                    <form className="flex flex--coluna">
-                        <Botao onClick={handleShow}>Entrada</Botao>
-                        <Botao><a href="#modal2">Saída</a></Botao>
-                    </form>
+                    <GrupoDeBotoes>
+                        <Botao onClick={handleShowModalEntrada}>Entrada</Botao>
+                        <Botao onClick={handleShowModalSaida}>Saída</Botao>
+                    </GrupoDeBotoes>
                 </Cartao>
                 <Cartao>
                     <Titulo> Novo Cadastro </Titulo>
-                    <form className="flex flex--coluna">
+                    <GrupoDeBotoes>
                         <Botao><a href="#modal3">Produto</a></Botao>
                         <Botao><a href="#modal4">Fornecedor</a></Botao>
                         <Botao><a href="#modal5">Usuário</a></Botao>
-                    </form>
+                    </GrupoDeBotoes>
                 </Cartao>
                 <Cartao>
                     <Titulo> Gerar Relatório </Titulo>
-                    <form className="flex flex--coluna">
+                    <GrupoDeBotoes>
 
                         <Botao><a href="#modal6">Estoque</a></Botao>
                         <Botao><a href="#modal7">Venda</a></Botao>
-                    </form>
+                    </GrupoDeBotoes>
                 </Cartao>
 
                 <Cartao>
                     <Titulo> Atualizar Dados</Titulo>
-                    <form className="flex flex--coluna">
+                    <GrupoDeBotoes>
 
                         <Botao><a href="#modal8">Fornecedor</a></Botao>
                         <Botao><a href="#modal9">Usuário</a></Botao>
-                    </form>
+                    </GrupoDeBotoes>
                 </Cartao>
             </Section>
+            <ModalMovimentacaoDeProduto show={showModalEntrada} onCloseListener={handleCloseModalEntrada} />
+            <ModalMovimentacaoDeProduto show={showModalSaida} saida={true} onCloseListener={handleCloseModalSaida} />
         </main >
     );
 }
-
-export default Main;

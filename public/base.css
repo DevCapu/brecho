@@ -5,7 +5,6 @@ body {
 	background-color: var(--cor-secundaria);
 	color: var(--cor-contraste-escuro);
 	font-family: var(--fonte-familia-corpo);
-	overflow-x: hidden;
 }
 
 .flex {
@@ -19,6 +18,10 @@ body {
 
 .flex--coluna {
 	flex-direction: row;
+}
+
+.mt-8 {
+	margin-top: 8px;
 }
 main{
 	display: flex;
