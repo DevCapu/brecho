@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import ModalMovimentacaoDeProduto from "./Modals/ModalMovimentacaoDeProduto";
+import ModalCadastroFornecedor from "./Modals/ModalCadastroFornecedor";
 
 const Section = styled.section`
     display: flex ;
@@ -57,6 +58,7 @@ const Botao = styled.div`
 export default function Main() {
     const [showModalEntrada, setShowEntradaProduto] = useState(false);
     const [showModalSaida, setShowSaidaProduto] = useState(false);
+    const [showModalCadastroFornecedor, setShowCadastroFornecedor] = useState(false);
 
 
     const handleCloseModalEntrada = () => setShowEntradaProduto(false);
@@ -65,6 +67,8 @@ export default function Main() {
     const handleCloseModalSaida = () => setShowSaidaProduto(false);
     const handleShowModalSaida = () => setShowSaidaProduto(true);
 
+    const handleCloseCadastroFornecedor = () => setShowCadastroFornecedor(false)
+    const handleShowCadastroFornecedor = () => setShowCadastroFornecedor(true)
 
     return (
         <main className="segundo--container">
@@ -80,7 +84,7 @@ export default function Main() {
                     <Titulo> Novo Cadastro </Titulo>
                     <GrupoDeBotoes>
                         <Botao><a href="#modal3">Produto</a></Botao>
-                        <Botao><a href="#modal4">Fornecedor</a></Botao>
+                        <Botao onClick={handleShowCadastroFornecedor}>Fornecedor</Botao>
                         <Botao><a href="#modal5">Usuário</a></Botao>
                     </GrupoDeBotoes>
                 </Cartao>
@@ -104,6 +108,7 @@ export default function Main() {
             </Section>
             <ModalMovimentacaoDeProduto show={showModalEntrada} onCloseListener={handleCloseModalEntrada} />
             <ModalMovimentacaoDeProduto show={showModalSaida} saida={true} onCloseListener={handleCloseModalSaida} />
+            <ModalCadastroFornecedor show={showModalCadastroFornecedor} onCloseListener={handleCloseCadastroFornecedor} />
         </main >
     );
 }
