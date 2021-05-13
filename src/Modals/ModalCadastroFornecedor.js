@@ -53,7 +53,6 @@ export default function ModalCadastroFornecedor(props) {
                     </Form.Group>
 
                     <Form.Group>
-
                         <Form.Row>
                             <Col>
                                 <Label for="codigo">Estado </Label>
