@@ -1,12 +1,6 @@
 import { Modal, Form, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 
-const Checkbox = styled(Form.Check)`
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-`;
-
 const Label = styled(Form.Label)`
     margin-bottom: 8px;
 `
@@ -130,7 +124,7 @@ export default function ModalCadastroFornecedor(props) {
                 <Modal.Footer>
                     <Button variant="primary" onClick={props.handleCloseListener} block>
                         Efetuar cadastro
-                </Button>
+                    </Button>
                 </Modal.Footer>
             </Form>
         </Modal >
