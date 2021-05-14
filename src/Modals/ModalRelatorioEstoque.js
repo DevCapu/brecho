@@ -1,5 +1,6 @@
 import { Modal, Form, Button, Col, Row } from "react-bootstrap";
 import styled from "styled-components";
+import axios from 'axios'
 
 const Label = styled(Form.Label)`
     margin-bottom: 8px;
@@ -12,6 +13,16 @@ const Checkbox = styled(Form.Check)`
 `;
 
 export default function ModalRelatorioEstoque(props) {
+    let meses;
+
+    axios({
+        method: 'get',
+        baseURL: "bla",
+
+    }).then(response => {
+        meses = response.data
+    })
+
     return (
         <Modal show={props.show} onHide={props.onCloseListener}>
             <Modal.Header closeButton>
@@ -24,18 +35,9 @@ export default function ModalRelatorioEstoque(props) {
                             <Col>
                                 <Label for="codigo">Ano</Label>
                                 <Form.Control as="select" required>
-                                    <option value="" selected disabled>Escolha...</option>
-                                    <option>2011</option>
-                                    <option>2012</option>
-                                    <option>2013</option>
-                                    <option>2014</option>
-                                    <option>2015</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
-                                    <option>2020</option>
-                                    <option>2021</option>
+                                    {meses.forEach(mes => (
+                                        <option value="" selected disabled>{mes}</option>
+                                    ))}
                                 </Form.Control>
                             </Col>
                             <Col>

@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import { Modal, Form, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -6,6 +8,24 @@ const Label = styled(Form.Label)`
 `
 
 export default function ModalCadastroUsuario(props) {
+    const [registro, setRegistro] = useState('funcionario');
+    const [login, setLogin] = useState('');
+    const [senha, setSenha] = useState('');
+
+
+    const clickHandler = () => {
+        axios({
+            method: 'post',
+            baseURL: "vla",
+            data: {
+                "nome": login,
+                "password": senha
+            }
+        }).then(response => {
+
+        })
+    }
+
     return (
         <Modal show={props.show} onHide={props.onCloseListener}>
             <Modal.Header closeButton>
@@ -13,30 +33,29 @@ export default function ModalCadastroUsuario(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Form.Group controlId="">
-                        <Form.Label for="codigo">Marca</Form.Label>
-                        <Form.Control as="select" required>
-                            <option value="" selected disabled>Escolha...</option>
-                            <option value="AF">Funcionário</option>
-                            <option value="AX">Administração</option>
+                    <Form.Group>
+                        <Form.Label for="registro">Registro</Form.Label>
+                        <Form.Control id="registro" as="select" required onChange={(event) => { setRegistro(event.target.value) }}>
+                            <option value="funcionario" selected>Funcionário</option>
+                            <option value="administracao">Administração</option>
                         </Form.Control>
                     </Form.Group>
 
-                    <Form.Group controlId="">
-                        <Label for="codigo">Login</Label>
-                        <Form.Control name="login" required={true} />
+                    <Form.Group>
+                        <Label for="login">Login</Label>
+                        <Form.Control id="login" name="login" required={true} required onChange={(event) => { setLogin(event.target.value) }} />
                         <Form.Control.Feedback type="invalid">Este campo não está válido</Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group controlId="">
+                    <Form.Group>
                         <Label for="codigo">Senha</Label>
-                        <Form.Control name="senha" type="password" required={true} />
+                        <Form.Control name="senha" type="password" required={true} required onChange={(event) => { setSenha(event.target.value) }} />
                         <Form.Control.Feedback type="invalid">Este campo não está válido</Form.Control.Feedback>
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={props.handleCloseListener} block>
+                <Button variant="primary" onClick={clickHandler} block>
                     Efetuar cadastro
                 </Button>
             </Modal.Footer>
