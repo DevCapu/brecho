@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link as RouterLink
+} from "react-router-dom";
+import Login from './Login';
 
 const Cabecalho = styled.header`
     background-color: var(--cor-contraste-claro);
@@ -59,7 +66,7 @@ function Header() {
                 <ListaNavegacao>
                     <Link> Bem Vindo ao Controle de Estoque! </Link>
                     <Botao>
-                        <a href="acesso.html"> Logout </a>
+                        <RouterLink to="/login">Logout</RouterLink>
                     </Botao>
                 </ListaNavegacao>
 

@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import Header from './Header';
 import Main from './Main'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Login from './Login';
 
 const Base = styled.div`
   width: 100vw;
@@ -13,8 +19,17 @@ const Base = styled.div`
 function App() {
   return (
     <Base>
-      <Header className="container" />
-      <Main className="container" />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Header className="container" />
+            <Main className="container" />
+          </Route>
+          <Route exact path="/login">
+            <Login className="container" />
+          </Route>
+        </Switch>
+      </Router>
     </Base>
   );
 }

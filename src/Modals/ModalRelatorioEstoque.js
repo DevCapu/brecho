@@ -13,7 +13,7 @@ const Checkbox = styled(Form.Check)`
 `;
 
 export default function ModalRelatorioEstoque(props) {
-    let meses;
+    let meses = [];
 
     axios({
         method: 'get',
